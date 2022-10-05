@@ -1,0 +1,3 @@
+https://www.engineersgarage.com/arduino-rfid-rc522-door-lock/
+https://howtomechatronics.com/tutorials/arduino/rfid-works-make-arduino-based-rfid-door-lock/
+https://docs.google.com/document/d/1s4-OSVEBZEBNbGNSexUQeargxSwNXMszGuF4wo9Jwiw/edit

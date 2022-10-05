@@ -1,0 +1,39 @@
+Problematica
+Nuestra escuela tiene una alta demora al tomar asistencia e inscribir quienes llegan tarde a la institución, requiriendo así un personal que podria estar cumpliendo otra función.
+
+
+Pensamos solucionar este problema con un sistema de acceso controlado por un chip RFID para poder tener controlado la asistencia de todos los alumnos.
+
+Los recursos que vamos a necesitar para este proyecto son 
+MFRC522 RFID Module
+Servo Motor
+LCD Display
+Arduino Board 
+Protoboard y cables 
+Proximity Sensor CNY70 
+
+Diseño de circuito (Pendiente)
+Diagrama de flujo de datos (Pendiente)
+Circuito realizado en clase (Pendiente)
+
+Informe(Pendiente)
+- Título del proyecto
+- Indice
+- Caratula
+- Imagenes de diagramas
+
+RFID Radio Frequency Identification (Identificacion de radio frecuencia)
+
+Ya que los sistemas de acceso por huella digital son usados para soluciones de alta seguridad y terminan siendo de alto costo para nuestro proyecto hemos decidido usar el sistema de RFID ya que son mucho más baratas y aún así terminan solucionando nuestras problemáticas.
+
+
+LINKS 
+https://articulo.mercadolibre.com.ar/MLA-673557425-kit-rfid-lector-mfrc-522-rc522-tarjeta-llavero-s50-a0108-_JM?matt_tool=92724942&matt_word=&matt_source=google&matt_campaign_id=14508409196&matt_ad_group_id=124055975502&matt_match_type=&matt_network=g&matt_device=c&matt_creative=543394189907&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=163783851&matt_product_id=MLA673557425&matt_product_partition_id=1730485668402&matt_target_id=pla-1730485668402&gclid=EAIaIQobChMIuurXlOK8-gIVaRZMCh1a9wfgEAYYASABEgJgivD_BwE
+
+
+https://articulo.mercadolibre.com.ar/MLA-620555341-sensor-optico-reflectivo-infrarrojo-cny70-arduino-pic-ptec-_JM#reco_item_pos=0&reco_backend=machinalis-seller-items-pdp&reco_backend_type=low_level&reco_client=vip-seller_items-above&reco_id=93a1efbd-f71a-416c-834f-bbe76ecf3e64
+
+
+
+
+
