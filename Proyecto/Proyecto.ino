@@ -1,11 +1,13 @@
 
 #include <SPI.h>      // incluye libreria bus SPI
 #include <MFRC522.h>      // incluye libreria especifica para MFRC522
+#include <LiquidCrystal.h> // incluye libreria específica para la pantalla LCD
 
 #define RST_PIN  9      // constante para referenciar pin de reset
 #define SS_PIN  10      // constante para referenciar pin de slave select
 #define Buzzer 6        // constante para referenciar pin del buzzer
 MFRC522 mfrc522(SS_PIN, RST_PIN); // crea objeto mfrc522 enviando pines de slave select y reset
+LiquidCrystal lcd(A5, A4, A3, A2, A1, A0); // crea objeto para lcd
 
 byte LecturaUID[4];         // crea array para almacenar el UID leido
 byte Usuario1[4]= {0xC3, 0x05, 0x0D, 0x1C} ;    // UID de tarjeta leido en programa 1
