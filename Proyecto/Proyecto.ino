@@ -47,9 +47,9 @@ void loop() {
             Serial.println("Bienvenido Alexander Tscherkasow"); // si retorna verdadero muestra texto bienvenida   
            else           // si retorna falso
             Serial.println("No te conozco"); // muestra texto equivalente a acceso denegado 
-            tone(Buzzer, 1700);
-            delay(100);
-            noTone(Buzzer);         
+            tone(Buzzer, 2000); // ejecuta ruido buzzer
+            delay(400); // por 4 milisegundos 
+            noTone(Buzzer); // deja de sonar buzzer
                   
                   mfrc522.PICC_HaltA();     // detiene comunicacion con tarjeta                
 }
