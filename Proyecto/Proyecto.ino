@@ -5,9 +5,9 @@
 
 #define RST_PIN  9      // constante para referenciar pin de reset
 #define SS_PIN  10      // constante para referenciar pin de slave select
-#define Buzzer 6        // constante para referenciar pin del buzzer
+#define Buzzer 8        // constante para referenciar pin del buzzer
 MFRC522 mfrc522(SS_PIN, RST_PIN); // crea objeto mfrc522 enviando pines de slave select y reset
-LiquidCrystal lcd(A5, A4, A3, A2, A1, A0); // crea objeto para lcd
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7); // crea objeto para lcd
 
 byte LecturaUID[4];         // crea array para almacenar el UID leido
 byte Usuario1[4]= {0xC3, 0x05, 0x0D, 0x1C} ;    // UID de tarjeta leido en programa 1
@@ -16,11 +16,14 @@ byte Usuario2[4]= {} ;    // UID de llavero leido en programa 1
 void setup() {
   Serial.begin(9600);     // inicializa comunicacion por monitor serie a 9600 bps
   SPI.begin();        // inicializa bus SPI
+  lcd.begin(16,2); // inicializa LCD
   mfrc522.PCD_Init();     // inicializa modulo lector
   Serial.println("Listo");    // Muestra texto Listo
 }
 
 void loop() {
+  lcd.clear();
+  lcd.print("Ingrese su tarjeta");
   if ( ! mfrc522.PICC_IsNewCardPresent())   // si no hay una tarjeta presente
     return;           // retorna al loop esperando por una tarjeta
   
@@ -47,6 +50,8 @@ void loop() {
             Serial.println("Bienvenido Alexander Tscherkasow"); // si retorna verdadero muestra texto bienvenida   
            else           // si retorna falso
             Serial.println("No te conozco"); // muestra texto equivalente a acceso denegado 
+            lcd.setCursor(0,1);
+            lcd.print("LCD");
             tone(Buzzer, 2000); // ejecuta ruido buzzer
             delay(400); // por 4 milisegundos 
             noTone(Buzzer); // deja de sonar buzzer
