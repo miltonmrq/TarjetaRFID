@@ -9,7 +9,7 @@
 
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // crea objeto mfrc522 enviando pines de slave select y reset
-LiquidCrystal lcd(2, 3, 4, 5, 6, 7); // crea objeto para lcd
+LiquidCrystal lcd(4, 5, 6, 7, 2, 3); // crea objeto para lcd
 
 byte LecturaUID[4]; // crea array para almacenar el UID leido
 byte Usuario1[4]= {0xC3, 0x05, 0x0D, 0x1C} ; // UID de tarjeta leido en programa 1
@@ -19,15 +19,21 @@ void setup() {
   Serial.begin(9600);     // inicializa comunicacion por monitor serie a 9600 bps
   SPI.begin();        // inicializa bus SPI
   lcd.begin(16, 2); // inicializa LCD
+  lcd.clear();
+  lcd.print("Test");
   mfrc522.PCD_Init();     // inicializa modulo lector
   Serial.println("Listo");    // Muestra texto Listo
 
 }
 
 void loop() {
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("LCDA ASDASD ASDAS ");
+
+  // lcd.setCursor(0, 1);
+  // Escribimos el número de segundos trascurridos
+  // lcd.print(millis()/1000);
+  // lcd.print(" segundos");
+  // delay(100);
+
 
   if ( ! mfrc522.PICC_IsNewCardPresent())   // si no hay una tarjeta presente
     return;           // retorna al loop esperando por una tarjeta
