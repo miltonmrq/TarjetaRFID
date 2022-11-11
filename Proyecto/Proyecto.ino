@@ -9,18 +9,19 @@
 
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // crea objeto mfrc522 enviando pines de slave select y reset
-LiquidCrystal lcd(4, 5, 6, 7, 2, 3); // crea objeto para lcd
+LiquidCrystal lcd(2, 3, 5, 4, 6 ,7); // crea objeto para lcd
 
 byte LecturaUID[4]; // crea array para almacenar el UID leido
-byte Usuario1[4]= {0xC3, 0x05, 0x0D, 0x1C} ; // UID de tarjeta leido en programa 1
-byte Usuario2[4]= {0x06, 0x76, 0x25, 0xD9} ; // UID de llavero leido en programa 1
+byte Usuario1[4]= {0x43, 0x55, 0xA7, 0xAC} ; // UID de tarjeta leido en programa 1
+byte Usuario2[4]= {0xC3, 0x05, 0x0D, 0x1C} ; // UID de llavero leido en programa 1
 
 void setup() {
   Serial.begin(9600);     // inicializa comunicacion por monitor serie a 9600 bps
   SPI.begin();        // inicializa bus SPI
   lcd.begin(16, 2); // inicializa LCD
+  lcd.print("Iniciando...");
+  delay(2000);
   lcd.clear();
-  lcd.print("Test");
   mfrc522.PCD_Init();     // inicializa modulo lector
   Serial.println("Listo");    // Muestra texto Listo
 
@@ -28,11 +29,7 @@ void setup() {
 
 void loop() {
 
-  // lcd.setCursor(0, 1);
-  // Escribimos el número de segundos trascurridos
-  // lcd.print(millis()/1000);
-  // lcd.print(" segundos");
-  // delay(100);
+
 
 
   if ( ! mfrc522.PICC_IsNewCardPresent())   // si no hay una tarjeta presente
@@ -57,12 +54,15 @@ void loop() {
           if(comparaUID(LecturaUID, Usuario1))    // llama a funcion comparaUID con Usuario1
             Serial.println("Bienvenido Milton Márquez"); // si retorna verdadero muestra texto bienvenida
           else if(comparaUID(LecturaUID, Usuario2)) // llama a funcion comparaUID con Usuario2
-            Serial.println("Bienvenido Alexander Tscherkasow"); // si retorna verdadero muestra texto bienvenida   
+            Serial.println("Bienvenido"); // si retorna verdadero muestra texto bienvenida   
            else // si retorna falso
-            Serial.println("No te conozco"); // muestra texto equivalente a acceso denegado 
+            Serial.println("Denegado"); // muestra texto equivalente a acceso denegado 
+            lcd.print("Denegado");
             tone(Buzzer, 2000); // ejecuta ruido buzzer
             delay(400); // por 4 milisegundos 
             noTone(Buzzer); // deja de sonar buzzer
+            delay(2000);
+            lcd.clear();
             mfrc522.PICC_HaltA();     // detiene comunicacion con tarjeta                
 }
 
