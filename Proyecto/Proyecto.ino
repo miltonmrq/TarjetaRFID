@@ -13,7 +13,9 @@ LiquidCrystal lcd(2, 3, 5, 4, 6 ,7); // crea objeto para lcd
 
 byte LecturaUID[4]; // crea array para almacenar el UID leido
 byte Usuario1[4]= {0x43, 0x55, 0xA7, 0xAC} ; // UID de tarjeta leido en programa 1
-byte Usuario2[4]= {0x43, 0x55, 0xA7, 0xAC} ; // UID de llavero leido en programa 1
+byte Usuario2[4]= {0x82, 0x7E, 0x1F, 0x1A} ; // UID de llavero leido en programa 1
+
+
 
 void setup() {
   Serial.begin(9600);     // inicializa comunicacion por monitor serie a 9600 bps
@@ -36,7 +38,7 @@ void loop() {
   if ( ! mfrc522.PICC_ReadCardSerial())     // si no puede obtener datos de la tarjeta
     return;           // retorna al loop esperando por otra tarjeta
     
-    Serial.print("UID:");       // muestra texto UID:
+    Serial.print("UID:");       // muestra texto UID: 
     for (byte i = 0; i < mfrc522.uid.size; i++) { // bucle recorre de a un byte por vez el UID
       if (mfrc522.uid.uidByte[i] < 0x10){   // si el byte leido es menor a 0x10
         Serial.print(" 0");       // imprime espacio en blanco y numero cero
@@ -54,6 +56,8 @@ void loop() {
             lcd.clear();
             lcd.setCursor(0,0);
             lcd.print("Bienvenido");
+            lcd.setCursor(0,1);
+            lcd.print("Milton Márquez");
             tone(Buzzer, 2000); // ejecuta ruido buzzer
             delay(400); // por 4 milisegundos 
             noTone(Buzzer); // deja de sonar buzzer
@@ -63,6 +67,17 @@ void loop() {
 
           } else if(comparaUID(LecturaUID, Usuario2)){ // llama a funcion comparaUID con Usuario2
             Serial.println("Bienvenido"); // si retorna verdadero muestra texto bienvenida   
+            lcd.clear();
+            lcd.setCursor(0,0);
+            lcd.print("Mauro no");
+            lcd.setCursor(0,1);
+            lcd.print("hay mas saldo.");
+            tone(Buzzer, 2000); // ejecuta ruido buzzer
+            delay(400); // por 4 milisegundos 
+            noTone(Buzzer); // deja de sonar buzzer
+            delay(600);
+            lcd.clear();
+
           } else { // si retorna falso
             Serial.println("Denegado"); // muestra texto equivalente a acceso denegado 
             lcd.print("Denegado");
